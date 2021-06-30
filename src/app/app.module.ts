@@ -8,13 +8,15 @@ import {HeaderComponent} from './layout/header/header.component';
 import {FooterComponent} from './layout/footer/footer.component';
 import {HomeComponent} from './home/home.component';
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
+import { NailComponent } from './components/banner/nail/nail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    NailComponent
   ],
   imports: [
     BrowserModule,
