@@ -9,6 +9,7 @@ import {FooterComponent} from './layout/footer/footer.component';
 import {HomeComponent} from './home/home.component';
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { NailComponent } from './components/banner/nail/nail.component';
+import { ProductsPreviewComponent } from './components/preview/products-preview/products-preview.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NailComponent } from './components/banner/nail/nail.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    NailComponent
+    NailComponent,
+    ProductsPreviewComponent
   ],
   imports: [
     BrowserModule,
