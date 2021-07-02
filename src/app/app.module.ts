@@ -11,7 +11,6 @@ import {HomeComponent} from './home/home.component';
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { NailComponent } from './components/banner/nail/nail.component';
 import { ProductsPreviewComponent } from './components/preview/products-preview/products-preview.component';
-import {LanguageInterceptor} from "./shared/interceptors/language.interceptor";
 
 @NgModule({
   declarations: [
@@ -29,9 +28,7 @@ import {LanguageInterceptor} from "./shared/interceptors/language.interceptor";
     BrowserAnimationsModule,
     AppMaterialModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true },
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
