@@ -1,4 +1,5 @@
 import {NgModule} from '@angular/core';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -10,6 +11,7 @@ import {HomeComponent} from './home/home.component';
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { NailComponent } from './components/banner/nail/nail.component';
 import { ProductsPreviewComponent } from './components/preview/products-preview/products-preview.component';
+import {LanguageInterceptor} from "./shared/interceptors/language.interceptor";
 
 @NgModule({
   declarations: [
@@ -23,10 +25,13 @@ import { ProductsPreviewComponent } from './components/preview/products-preview/
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppMaterialModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LanguageInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
