@@ -13,9 +13,14 @@
       </div>
     </div>
     <div class="row">
-      <ng-container *ngIf="previewData?.products">
+      <ng-container *ngIf="previewData?.products?.length">
         <div class="col-sm-6 col-xl-3" *ngFor="let product of previewData?.products">
           {{product.title}}
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!previewData?.products?.length">
+        <div class="col-12 no-data-description">
+          <p>Sorry, no data available at this time, please try again later!</p>
         </div>
       </ng-container>
       <div class="col-12 d-flex d-md-none justify-content-center mt-4">
