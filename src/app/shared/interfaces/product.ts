@@ -1,7 +1,9 @@
 export interface IProduct {
   id: number,
   title: string,
-  price: string
+  image: string,
+  category: string,
+  price: string,
 }
 
 export interface IProductsPreview {

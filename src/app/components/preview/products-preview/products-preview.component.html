@@ -13,18 +13,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-lg-4 col-xl-3">
-        Product item
-      </div>
-      <div class="col-sm-6 col-lg-4 col-xl-3">
-        Product item
-      </div>
-      <div class="col-sm-6 col-lg-4 col-xl-3">
-        Product item
-      </div>
-      <div class="col-sm-6 col-lg-4 col-xl-3">
-        Product item
-      </div>
+      <ng-container *ngIf="previewData?.products">
+        <div class="col-sm-6 col-xl-3" *ngFor="let product of previewData?.products">
+          {{product.title}}
+        </div>
+      </ng-container>
       <div class="col-12 d-flex d-md-none justify-content-center mt-4">
         <a [routerLink]="previewData?.link" mat-flat-button color="primary">
           {{previewData?.buttonText}}

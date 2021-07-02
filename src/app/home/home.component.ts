@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IProductsPreview} from "../shared/interfaces/product";
-import {Observable} from "rxjs";
+import {IProduct, IProductsPreview} from "../shared/interfaces/product";
 import {ProductsService} from "../shared/services/products.service";
 
 @Component({
@@ -10,7 +9,6 @@ import {ProductsService} from "../shared/services/products.service";
 })
 export class HomeComponent implements OnInit {
   public productsPreviewData: IProductsPreview;
-  public products$: Observable<any>;
 
   constructor(private productsService: ProductsService) {
     this.productsPreviewData = {
@@ -19,11 +17,18 @@ export class HomeComponent implements OnInit {
       buttonText: 'View All',
       products: []
     }
-    this.products$ = this.productsService.products$;
+  }
+
+  public initProductsList() {
+    const limit = 4;
+    this.productsService.getMostPopularProducts(limit).subscribe(
+      (products: IProduct[]) => {
+        this.productsPreviewData.products = products;
+      });
   }
 
   ngOnInit(): void {
-    this.productsService.getMostPopularProducts();
+    this.initProductsList();
   }
 
 }
