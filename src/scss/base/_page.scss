@@ -6,7 +6,11 @@
 }
 
 .mat-h2, .mat-title, .mat-typography h2.page-title {
-  font-size: 2rem;
+  font-size: 1.75rem;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
 }
 
 .page-description {

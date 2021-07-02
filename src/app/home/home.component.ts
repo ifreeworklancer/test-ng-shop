@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {IProductsPreview} from "../shared/interfaces/product";
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  public productsPreviewData: IProductsPreview;
 
-  constructor() { }
+  constructor() {
+    this.productsPreviewData = {
+      title: 'Most Popular Products',
+      link: '/products',
+      buttonText: 'View All',
+      products: []
+    }
+  }
 
   ngOnInit(): void {
   }

@@ -4,21 +4,31 @@
       <div class="col-sm-12">
         <div class="products-preview-header">
           <h2 class="page-title">
-            Title
+            {{previewData?.title}}
           </h2>
-          <a routerLink="/products" mat-flat-button color="primary">View All</a>
+          <a [routerLink]="previewData?.link" mat-flat-button color="primary" class="d-none d-md-block">
+            {{previewData?.buttonText}}
+          </a>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6 col-lg-4">
+      <div class="col-sm-6 col-lg-4 col-xl-3">
         Product item
       </div>
-      <div class="col-sm-6 col-lg-4">
+      <div class="col-sm-6 col-lg-4 col-xl-3">
         Product item
       </div>
-      <div class="col-sm-6 col-lg-4">
+      <div class="col-sm-6 col-lg-4 col-xl-3">
         Product item
+      </div>
+      <div class="col-sm-6 col-lg-4 col-xl-3">
+        Product item
+      </div>
+      <div class="col-12 d-flex d-md-none justify-content-center mt-4">
+        <a [routerLink]="previewData?.link" mat-flat-button color="primary">
+          {{previewData?.buttonText}}
+        </a>
       </div>
     </div>
   </div>
