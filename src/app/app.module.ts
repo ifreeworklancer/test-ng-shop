@@ -12,6 +12,8 @@ import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { NailComponent } from './components/banner/nail/nail.component';
 import { ProductsPreviewComponent } from './components/preview/products-preview/products-preview.component';
 import { ProductCardComponent } from './components/card/product-card/product-card.component';
+import { ProductsArchiveComponent } from './products/products-archive/products-archive.component';
+import { ProductsSingleComponent } from './products/products-single/products-single.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProductCardComponent } from './components/card/product-card/product-car
     HomeComponent,
     NailComponent,
     ProductsPreviewComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductsArchiveComponent,
+    ProductsSingleComponent
   ],
   imports: [
     BrowserModule,
