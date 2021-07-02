@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   public initProductsList() {
-    const limit = 4;
+    const limit = 3;
     this.productsService.getMostPopularProducts(limit).subscribe(
       (products: IProduct[]) => {
         this.productsPreviewData.products = products;

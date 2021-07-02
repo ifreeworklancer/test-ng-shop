@@ -1,0 +1,14 @@
+<div class="product-card">
+  <div class="product-card-preview">
+    <img [src]="product?.image" alt="product image" class="product-card__image">
+    <div class="product-card-basket">
+      <button class="product-card-basket__button" mat-mini-fab color="accent" aria-label="Basket">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="product-card-body">
+    <h4 class="product-card__title">{{product?.title}}</h4>
+    <div class="product-card__price">{{product?.price}} $</div>
+  </div>
+</div>

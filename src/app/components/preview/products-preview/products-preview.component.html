@@ -14,8 +14,8 @@
     </div>
     <div class="row">
       <ng-container *ngIf="previewData?.products?.length">
-        <div class="col-sm-6 col-xl-3" *ngFor="let product of previewData?.products">
-          {{product.title}}
+        <div class="col-lg-4" *ngFor="let product of previewData?.products">
+          <app-product-card [product]="product"></app-product-card>
         </div>
       </ng-container>
       <ng-container *ngIf="!previewData?.products?.length">

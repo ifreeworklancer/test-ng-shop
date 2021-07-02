@@ -11,6 +11,7 @@ import {HomeComponent} from './home/home.component';
 import {AppMaterialModule} from "./shared/app-material/app-material.module";
 import { NailComponent } from './components/banner/nail/nail.component';
 import { ProductsPreviewComponent } from './components/preview/products-preview/products-preview.component';
+import { ProductCardComponent } from './components/card/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductsPreviewComponent } from './components/preview/products-preview/
     FooterComponent,
     HomeComponent,
     NailComponent,
-    ProductsPreviewComponent
+    ProductsPreviewComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,
