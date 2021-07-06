@@ -1,4 +1,5 @@
 .product-card {
+  display: block;
   position: relative;
   margin: 0 auto 40px;
   max-width: 380px;
@@ -6,6 +7,8 @@
   background: #EBEEF5;
   border: 1px solid #E4E7ED;
   border-radius: 8px;
+  color: #333;
+  text-decoration: none;
 
   &::before {
     content: '';

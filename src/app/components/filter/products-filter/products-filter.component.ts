@@ -21,27 +21,27 @@ export class ProductsFilterComponent implements OnInit {
   public changeCategory(): void {
     this.onChangeLoading.emit(true);
     if (this.filter.category === 'all') {
-      this.productsService.getAllProducts().subscribe(
-        (products: IProduct[]) => {
+      this.productsService.getAllProducts().subscribe((products: IProduct[]) => {
           this.onChangeFilter.emit(products);
           this.onChangeLoading.emit(false);
         }
       )
       return;
     }
-    this.productsService.getProductsInSpecificCategory(this.filter.category).subscribe(
-      (products: IProduct[]) => {
-        this.onChangeFilter.emit(products);
-        this.onChangeLoading.emit(false);
-      }
-    )
+    this.productsService.getProductsInSpecificCategory(this.filter.category)
+      .subscribe((products: IProduct[]) => {
+          this.onChangeFilter.emit(products);
+          this.onChangeLoading.emit(false);
+        }
+      )
   }
 
   public initCategoryList(): void {
-    this.productsService.getAllCategories().subscribe(
-      (categories: []) => {
-        this.categoryList = categories;
-      });
+    this.onChangeLoading.emit(true);
+    this.productsService.getAllCategories().subscribe((categories: []) => {
+      this.categoryList = categories;
+      this.onChangeLoading.emit(false);
+    });
   }
 
   ngOnInit(): void {

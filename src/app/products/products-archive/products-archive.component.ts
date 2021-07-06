@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IProduct} from "../../shared/interfaces/product";
+import {ProductsService} from "../../shared/services/products.service";
 
 @Component({
   selector: 'app-products-archive',
@@ -10,7 +11,14 @@ export class ProductsArchiveComponent implements OnInit {
   public isLoading: boolean = false;
   public productsList?: IProduct[];
 
-  constructor() {
+  constructor(private productsService: ProductsService) {
+  }
+
+  public initProductList(): void {
+    this.productsService.getAllProducts().subscribe((products: IProduct[]) => {
+        this.productsList = products;
+      }
+    )
   }
 
   public changeProductList(value: IProduct[]): void {
@@ -22,6 +30,7 @@ export class ProductsArchiveComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initProductList();
   }
 
 }

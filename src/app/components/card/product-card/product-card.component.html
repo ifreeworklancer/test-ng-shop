@@ -1,6 +1,7 @@
-<div class="product-card">
+<a [routerLink]="['/products/', product?.id]" class="product-card">
   <div class="product-card-preview">
-    <img [src]="product?.image" alt="product image" class="product-card__image">
+    <img *ngIf="product?.image" [src]="product?.image" alt="product image" class="product-card__image">
+    <img *ngIf="!product?.image" src="assets/image/banner/no-image.jpg" alt="no product image" class="product-card__image">
     <div class="product-card-basket">
       <button class="product-card-basket__button" mat-mini-fab color="accent" aria-label="Basket">
         <mat-icon>shopping_cart</mat-icon>
@@ -11,4 +12,4 @@
     <h4 class="product-card__title">{{product?.title}}</h4>
     <div class="product-card__price">{{product?.price}} $</div>
   </div>
-</div>
+</a>
