@@ -14,6 +14,8 @@ import { ProductsPreviewComponent } from './components/preview/products-preview/
 import { ProductCardComponent } from './components/card/product-card/product-card.component';
 import { ProductsArchiveComponent } from './products/products-archive/products-archive.component';
 import { ProductsSingleComponent } from './products/products-single/products-single.component';
+import { ProductsFilterComponent } from './components/filter/products-filter/products-filter.component';
+import { ProductsCatalogComponent } from './components/catalog/products-catalog/products-catalog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ProductsSingleComponent } from './products/products-single/products-sin
     ProductsPreviewComponent,
     ProductCardComponent,
     ProductsArchiveComponent,
-    ProductsSingleComponent
+    ProductsSingleComponent,
+    ProductsFilterComponent,
+    ProductsCatalogComponent
   ],
   imports: [
     BrowserModule,
