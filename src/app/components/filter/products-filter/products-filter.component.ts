@@ -23,6 +23,10 @@ export class ProductsFilterComponent implements OnInit {
     if (this.filter.category === 'all') {
       this.productsService.getAllProducts().subscribe((products: IProduct[]) => {
           this.onChangeFilter.emit(products);
+        },
+        () => {
+        },
+        () => {
           this.onChangeLoading.emit(false);
         }
       )
@@ -31,6 +35,10 @@ export class ProductsFilterComponent implements OnInit {
     this.productsService.getProductsInSpecificCategory(this.filter.category)
       .subscribe((products: IProduct[]) => {
           this.onChangeFilter.emit(products);
+        },
+        () => {
+        },
+        () => {
           this.onChangeLoading.emit(false);
         }
       )
@@ -39,9 +47,13 @@ export class ProductsFilterComponent implements OnInit {
   public initCategoryList(): void {
     this.onChangeLoading.emit(true);
     this.productsService.getAllCategories().subscribe((categories: []) => {
-      this.categoryList = categories;
-      this.onChangeLoading.emit(false);
-    });
+        this.categoryList = categories;
+      },
+      () => {
+      },
+      () => {
+        this.onChangeLoading.emit(false);
+      });
   }
 
   ngOnInit(): void {
