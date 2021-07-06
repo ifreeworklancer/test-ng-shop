@@ -1,1 +1,15 @@
-<p>products-filter works!</p>
+<div class="filter filter-products">
+  <div class="row">
+    <div class="col-sm-6 col-lg-4">
+      <ng-container *ngIf="categoryList?.length">
+        <mat-form-field class="filter-item" appearance="standard">
+          <mat-label>Category</mat-label>
+          <mat-select (selectionChange)="changeCategory()" [(ngModel)]="filter.category" >
+            <mat-option value="all">all</mat-option>
+            <mat-option *ngFor="let category of categoryList" [value]="category">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+    </div>
+  </div>
+</div>
