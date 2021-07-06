@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {IProduct} from "../../shared/interfaces/product";
 
 @Component({
   selector: 'app-products-archive',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsArchiveComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
+
+  public changeProductList(value: IProduct[]): void {
+    console.log(value)
+  }
 
   ngOnInit(): void {
   }

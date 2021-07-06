@@ -7,7 +7,7 @@
         </h1>
       </div>
     </div>
-    <app-products-filter></app-products-filter>
+    <app-products-filter (onChangeFilter)="changeProductList($event)"></app-products-filter>
     <app-products-catalog></app-products-catalog>
   </div>
 </section>

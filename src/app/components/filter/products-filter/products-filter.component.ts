@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ProductsService} from "../../../shared/services/products.service";
 import {IProduct} from "../../../shared/interfaces/product";
 
@@ -11,25 +11,24 @@ export class ProductsFilterComponent implements OnInit {
   public filter: { category: 'all' };
   public categoryList: [] | undefined;
 
-  @Output() productListFromFilter?: IProduct[];
+  @Output() onChangeFilter = new EventEmitter<IProduct[]>();
 
   constructor(private productsService: ProductsService) {
     this.filter = {category: 'all'}
   }
 
   public changeCategory(): void {
-    console.log(3);
     if (this.filter.category === 'all') {
       this.productsService.getAllProducts().subscribe(
         (products: IProduct[]) => {
-          this.productListFromFilter = products;
+          this.onChangeFilter.emit(products);
         }
       )
       return;
     }
     this.productsService.getProductsInSpecificCategory(this.filter.category).subscribe(
       (products: IProduct[]) => {
-        this.productListFromFilter = products;
+        this.onChangeFilter.emit(products);
       }
     )
   }
