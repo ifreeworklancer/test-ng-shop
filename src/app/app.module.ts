@@ -17,6 +17,7 @@ import { ProductsArchiveComponent } from './products/products-archive/products-a
 import { ProductsSingleComponent } from './products/products-single/products-single.component';
 import { ProductsFilterComponent } from './components/filter/products-filter/products-filter.component';
 import { ProductsCatalogComponent } from './components/catalog/products-catalog/products-catalog.component';
+import { FullscreenLoaderComponent } from './components/loader/fullscreen-loader/fullscreen-loader.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ProductsCatalogComponent } from './components/catalog/products-catalog/
     ProductsArchiveComponent,
     ProductsSingleComponent,
     ProductsFilterComponent,
-    ProductsCatalogComponent
+    ProductsCatalogComponent,
+    FullscreenLoaderComponent
   ],
   imports: [
     BrowserModule,

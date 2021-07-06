@@ -12,16 +12,19 @@ export class ProductsFilterComponent implements OnInit {
   public categoryList: [] | undefined;
 
   @Output() onChangeFilter = new EventEmitter<IProduct[]>();
+  @Output() onChangeLoading = new EventEmitter<boolean>();
 
   constructor(private productsService: ProductsService) {
     this.filter = {category: 'all'}
   }
 
   public changeCategory(): void {
+    this.onChangeLoading.emit(true);
     if (this.filter.category === 'all') {
       this.productsService.getAllProducts().subscribe(
         (products: IProduct[]) => {
           this.onChangeFilter.emit(products);
+          this.onChangeLoading.emit(false);
         }
       )
       return;
@@ -29,6 +32,7 @@ export class ProductsFilterComponent implements OnInit {
     this.productsService.getProductsInSpecificCategory(this.filter.category).subscribe(
       (products: IProduct[]) => {
         this.onChangeFilter.emit(products);
+        this.onChangeLoading.emit(false);
       }
     )
   }
