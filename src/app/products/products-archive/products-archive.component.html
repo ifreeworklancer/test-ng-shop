@@ -10,7 +10,7 @@
     <app-products-filter (onChangeFilter)="changeProductList($event)"
                          (onChangeLoading)="changeLoader($event)">
     </app-products-filter>
-    <app-products-catalog></app-products-catalog>
+    <app-products-catalog [productsList]="productsList"></app-products-catalog>
     <app-fullscreen-loader [isLoading]="isLoading"></app-fullscreen-loader>
   </div>
 </section>

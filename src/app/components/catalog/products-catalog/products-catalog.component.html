@@ -1,1 +1,9 @@
-<p>products-catalog works!</p>
+<div class="products-catalog">
+  <div class="row">
+    <ng-container *ngIf="productsList?.length">
+      <div class="col-sm-6 col-lg-4" *ngFor="let product of productsList">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

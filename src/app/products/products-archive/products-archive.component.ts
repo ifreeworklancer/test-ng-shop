@@ -8,12 +8,13 @@ import {IProduct} from "../../shared/interfaces/product";
 })
 export class ProductsArchiveComponent implements OnInit {
   public isLoading: boolean = false;
+  public productsList?: IProduct[];
 
   constructor() {
   }
 
   public changeProductList(value: IProduct[]): void {
-    console.log(value)
+    this.productsList = value;
   }
 
   public changeLoader(value: boolean): void {
