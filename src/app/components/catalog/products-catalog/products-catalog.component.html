@@ -5,5 +5,10 @@
         <app-product-card [product]="product"></app-product-card>
       </div>
     </ng-container>
+    <ng-container *ngIf="!productsList?.length">
+      <div class="col-12 no-data-description">
+        <p>Sorry, no data available at this time, please try again later!</p>
+      </div>
+    </ng-container>
   </div>
 </div>
