@@ -1,11 +1,41 @@
-<section class="page-section-hero section-single-products">
+<section class="page-section-hero section-single-product">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <h1 class="page-title">
-
+          {{product?.title}}
         </h1>
       </div>
     </div>
+    <div class="product-content-wrapper">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="product-preview">
+            <img *ngIf="product?.image" [src]="product?.image" alt="product image">
+            <img *ngIf="!product?.image" src="assets/image/banner/no-image.jpg" alt="product image">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="product-content">
+            <div class="product-header">
+              <div class="product-price">
+                {{product?.price}} $
+              </div>
+              <button class="product-card-basket" mat-mini-fab color="accent" aria-label="Basket">
+                <mat-icon>shopping_cart</mat-icon>
+              </button>
+            </div>
+            <div class="product-description">
+              <p>{{product?.description}}</p>
+            </div>
+            <div class="product-category" *ngIf="product?.category">
+              <button mat-flat-button>{{product?.category}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <app-products-preview [previewData]="productsPreviewData"></app-products-preview>
+  <app-fullscreen-loader [isLoading]="isLoading"></app-fullscreen-loader>
 </section>
