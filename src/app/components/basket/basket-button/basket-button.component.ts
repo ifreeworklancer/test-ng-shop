@@ -13,7 +13,11 @@ export class BasketButtonComponent implements OnInit {
   }
 
   public handleBasketClick(): void {
-    this.basketService.setBasket(String(this.productID));
+    if (!this.basketService.isAlreadyBasketItem(String(this.productID))) {
+      this.basketService.setBasket(String(this.productID));
+      return;
+    }
+    this.basketService.removeBasketItem(String(this.productID));
   }
 
   ngOnInit(): void {
