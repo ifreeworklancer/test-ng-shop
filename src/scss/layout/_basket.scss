@@ -1,0 +1,12 @@
+.basket-list {
+
+  &-item {
+    &:last-of-type {
+      .basket-item {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -28,7 +28,6 @@ export class BasketService {
           return products.find(product => String(product.id) === String(basketItem))
         })
         this.productsBasket$.next(productsBasket);
-        console.log(this.productsBasket$)
         return productsBasket;
       })
     }

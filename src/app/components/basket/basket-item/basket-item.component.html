@@ -1,1 +1,23 @@
-<p>basket-item works!</p>
+<div class="basket-item">
+  <div class="basket-item-col basket-item-col--preview">
+    <a [routerLink]="['/products/', basket?.id]" class="basket-item-preview">
+      <img *ngIf="basket?.image" [src]="basket?.image" alt="product image">
+      <img *ngIf="!basket?.image" src="assets/image/banner/no-image.jpg" alt="product image">
+    </a>
+  </div>
+  <div class="basket-item-col basket-item-col--title">
+    <h4 class="basket-item__title">
+      {{basket?.title}}
+    </h4>
+  </div>
+  <div class="basket-item-col">
+    <div class="basket-item__price">{{basket?.price}} $</div>
+  </div>
+  <div class="basket-item-col">
+    <div class="basket-item-remove">
+      <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
