@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IProduct} from "../../../shared/interfaces/product";
 
 @Component({
   selector: 'app-basket-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basket-list.component.scss']
 })
 export class BasketListComponent implements OnInit {
+  @Input() basketList?: IProduct[];
 
   constructor() { }
 

@@ -1,13 +1,16 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
+import {ProductsService} from "./products.service";
+import {IProduct} from "../interfaces/product";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketService {
   public basket$: BehaviorSubject<[]>;
+  public productsBasket$: BehaviorSubject<IProduct[] | []> = new BehaviorSubject<IProduct[]|[]>([]);
 
-  constructor() {
+  constructor(private productsService: ProductsService) {
     this.basket$ = new BehaviorSubject<[]>(this.getBasket);
   }
 
@@ -15,6 +18,21 @@ export class BasketService {
     if (localStorage.getItem('basket')) {
       return JSON.parse(<string>localStorage.getItem('basket'));
     }
+    return [];
+  }
+
+  get getBasketProduct(): any {
+    if (localStorage.getItem('basket')) {
+      this.productsService.getAllProducts().subscribe((products) => {
+        let productsBasket = this.getBasket.map((basketItem: number) => {
+          return products.find(product => String(product.id) === String(basketItem))
+        })
+        this.productsBasket$.next(productsBasket);
+        console.log(this.productsBasket$)
+        return productsBasket;
+      })
+    }
+    this.productsBasket$?.next([]);
     return [];
   }
 
