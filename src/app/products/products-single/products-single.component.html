@@ -22,9 +22,9 @@
               <div class="product-price">
                 {{product?.price}} $
               </div>
-              <button class="product-card-basket" mat-mini-fab color="accent" aria-label="Basket">
-                <mat-icon>shopping_cart</mat-icon>
-              </button>
+              <ng-container *ngIf="product?.id">
+                <app-basket-button [productID]="product?.id"></app-basket-button>
+              </ng-container>
             </div>
             <div class="product-description">
               <p>{{product?.description}}</p>

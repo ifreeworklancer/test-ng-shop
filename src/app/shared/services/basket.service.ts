@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasketService {
+  public basket$: BehaviorSubject<[]>;
 
   constructor() {
-
+    this.basket$ = new BehaviorSubject<[]>(this.getBasket);
   }
 
   get getBasket(): any {
@@ -21,6 +23,7 @@ export class BasketService {
       let newBasketItem = this.getBasket;
       newBasketItem.push(id);
       localStorage.setItem('basket', JSON.stringify(newBasketItem));
+      this.basket$?.next(this.getBasket)
     }
   }
 
@@ -30,11 +33,13 @@ export class BasketService {
     if (alreadyBasketItemIndex !== null) {
       newBasketItem.splice(alreadyBasketItemIndex, 1);
       localStorage.setItem('basket', JSON.stringify(newBasketItem));
+      this.basket$?.next(this.getBasket)
     }
   }
 
   public removeAllBasket(): void {
     localStorage.removeItem('basket');
+    this.basket$?.next(this.getBasket)
   }
 
   public isAlreadyBasketItem(id: string): boolean {

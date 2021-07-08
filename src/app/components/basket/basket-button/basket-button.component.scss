@@ -1,0 +1,24 @@
+.basket-button {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 80%;
+    transform: translateX(-50%) rotate(45deg);
+    transform-origin: top;
+    width: 2px;
+    height: 0;
+    background: #333;
+    z-index: 10;
+    transition: .5s;
+  }
+
+  &.is-already {
+
+    &::before {
+      height: 100%;
+    }
+  }
+}

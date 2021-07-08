@@ -8,6 +8,7 @@ import {BasketService} from "../../../shared/services/basket.service";
 })
 export class BasketButtonComponent implements OnInit {
   @Input() productID?: number;
+  public isAlready: boolean = false;
 
   constructor(private basketService: BasketService) {
   }
@@ -21,6 +22,9 @@ export class BasketButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.basketService.basket$?.subscribe(data => {
+      this.isAlready = this.basketService.isAlreadyBasketItem(String(this.productID))
+    })
   }
 
 }
