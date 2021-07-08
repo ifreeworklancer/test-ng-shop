@@ -19,6 +19,9 @@ import { ProductsFilterComponent } from './components/filter/products-filter/pro
 import { ProductsCatalogComponent } from './components/catalog/products-catalog/products-catalog.component';
 import { FullscreenLoaderComponent } from './components/loader/fullscreen-loader/fullscreen-loader.component';
 import { BasketButtonComponent } from './components/basket/basket-button/basket-button.component';
+import { BasketComponent } from './basket/basket.component';
+import { BasketListComponent } from './components/basket/basket-list/basket-list.component';
+import { BasketItemComponent } from './components/basket/basket-item/basket-item.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { BasketButtonComponent } from './components/basket/basket-button/basket-
     ProductsFilterComponent,
     ProductsCatalogComponent,
     FullscreenLoaderComponent,
-    BasketButtonComponent
+    BasketButtonComponent,
+    BasketComponent,
+    BasketListComponent,
+    BasketItemComponent
   ],
   imports: [
     BrowserModule,
