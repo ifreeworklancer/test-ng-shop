@@ -6,9 +6,9 @@
       </div>
       <div class="col-auto">
         <div class="basket">
-          <button mat-icon-button aria-label="Basket">
-            <mat-icon matBadge="0" matBadgeSize="small" matBadgeColor="warn">shopping_basket</mat-icon>
-          </button>
+          <a routerLink="/basket" mat-icon-button aria-label="Basket">
+            <mat-icon [matBadge]="basketLength" matBadgeSize="small" matBadgeColor="warn">shopping_basket</mat-icon>
+          </a>
         </div>
       </div>
     </div>

@@ -13,6 +13,12 @@ export class BasketButtonComponent implements OnInit {
   constructor(private basketService: BasketService) {
   }
 
+  public initBasketAlready(): void {
+    this.basketService.basket$?.subscribe(data => {
+      this.isAlready = this.basketService.isAlreadyBasketItem(String(this.productID))
+    })
+  }
+
   public handleBasketClick(): void {
     if (!this.basketService.isAlreadyBasketItem(String(this.productID))) {
       this.basketService.setBasket(String(this.productID));
@@ -22,9 +28,7 @@ export class BasketButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.basketService.basket$?.subscribe(data => {
-      this.isAlready = this.basketService.isAlreadyBasketItem(String(this.productID))
-    })
+    this.initBasketAlready();
   }
 
 }
