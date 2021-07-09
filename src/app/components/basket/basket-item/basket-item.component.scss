@@ -1,10 +1,15 @@
 .basket-item {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
   margin: 0 -15px;
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+  }
 
   &::before {
     content: '';
@@ -17,15 +22,25 @@
   }
 
   &-col {
-    width: 15%;
+    width: 100%;
+    max-width: 400px;
     padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 
-    &--title {
-      width: 35%;
+    @media (min-width: 992px) {
+      width: 15%;
+      margin-bottom: 0;
+      max-width: none;
     }
 
+    &--title,
     &--preview {
-      width: 35%;
+      @media (min-width: 992px) {
+        width: 35%;
+      }
     }
   }
 
@@ -38,6 +53,7 @@
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
+    width: 100%;
 
     &:hover {
 
@@ -62,10 +78,11 @@
 
   &__title {
     font-weight: 500;
-    margin-bottom: 30px;
+    margin-bottom: 0;
+    text-align: center;
 
-    @media (min-width: 768px) {
-      margin-bottom: 15px;
+    @media (min-width: 992px) {
+      text-align: left;
     }
   }
 

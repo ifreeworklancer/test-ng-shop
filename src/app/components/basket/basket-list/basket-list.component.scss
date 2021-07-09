@@ -1,5 +1,26 @@
-.basket-list {
-  padding: 15px;
-  border-radius: 8px;
-  background: #EBEEF5;
+.basket-list-wrapper {
+  .basket-list {
+    padding: 15px;
+    border-radius: 8px;
+    background: #EBEEF5;
+  }
+
+  .basket-remove-all {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+
+  .basket-total {
+    margin-top: 30px;
+    text-align: right;
+    font-size: 18px;
+
+    &__value {
+      font-size: 20px;
+      font-weight: bold;
+      margin-left: 15px;
+    }
+  }
 }

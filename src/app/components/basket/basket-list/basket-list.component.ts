@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IProduct} from "../../../shared/interfaces/product";
+import {BasketService} from "../../../shared/services/basket.service";
 
 @Component({
   selector: 'app-basket-list',
@@ -8,11 +9,18 @@ import {IProduct} from "../../../shared/interfaces/product";
 })
 export class BasketListComponent implements OnInit {
   @Input() basketList?: IProduct[];
+  @Input() basketTotal?: number;
   @Output() onRemoveBasket = new EventEmitter;
 
-  constructor() { }
+  constructor(private basketService: BasketService) {
+  }
 
-  public removeBasket() {
+  public removeAllBasket() {
+    this.basketService.removeAllBasket();
+    this.onRemoveBasket.emit();
+  }
+
+  public removeBasketItem() {
     this.onRemoveBasket.emit();
   }
 

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {ProductsService} from "./products.service";
 import {IProduct} from "../interfaces/product";
 
@@ -8,7 +8,6 @@ import {IProduct} from "../interfaces/product";
 })
 export class BasketService {
   public basket$: BehaviorSubject<[]>;
-  public productsBasket$: BehaviorSubject<IProduct[] | []> = new BehaviorSubject<IProduct[] | []>([]);
 
   constructor(private productsService: ProductsService) {
     this.basket$ = new BehaviorSubject<[]>(this.getBasket);
@@ -22,16 +21,19 @@ export class BasketService {
     return [];
   }
 
-  public getProductBasket(): any {
-    this.productsService.getAllProducts().subscribe((products) => {
-      if (this.getBasket.length) {
-        let productsBasket = this.getBasket.map((basketItem: number) => {
-          return products.find(product => String(product.id) === String(basketItem))
-        })
-        this.productsBasket$.next(productsBasket);
-        return;
-      }
-      this.productsBasket$.next([]);
+  public getProductBasket(): Observable<any> {
+    return new Observable<any>((subscriber) => {
+      this.productsService.getAllProducts().subscribe((products) => {
+        if (this.getBasket.length) {
+          let productsBasket = this.getBasket.map((basketItem: number) => {
+            return products.find(product => String(product.id) === String(basketItem))
+          })
+          subscriber.next(productsBasket);
+          return;
+        }
+        subscriber.next([]);
+        subscriber.complete();
+      })
     })
   }
 

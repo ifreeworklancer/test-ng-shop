@@ -1,9 +1,20 @@
-<div class="basket-list">
-  <div class="row">
-    <div class="col-12">
-      <ng-container *ngIf="basketList">
-        <app-basket-item class="basket-list-item" *ngFor="let basket of basketList" [basket]="basket" (onRemoveBasket)="removeBasket()"></app-basket-item>
-      </ng-container>
+<div class="basket-list-wrapper">
+  <div class="basket-remove-all">
+    <button mat-stroked-button color="warn" aria-label="Remove all basket" (click)="removeAllBasket()">
+      Remove all <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="basket-list">
+    <div class="row">
+      <div class="col-12">
+        <ng-container *ngIf="basketList">
+          <app-basket-item class="basket-list-item" *ngFor="let basket of basketList" [basket]="basket"
+                           (onRemoveBasket)="removeBasketItem()"></app-basket-item>
+        </ng-container>
+      </div>
     </div>
+  </div>
+  <div class="basket-total" *ngIf="basketTotal">
+      Total: <span class="basket-total__value">{{basketTotal}} $</span>
   </div>
 </div>
