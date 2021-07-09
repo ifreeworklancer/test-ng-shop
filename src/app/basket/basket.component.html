@@ -8,7 +8,8 @@
       </div>
     </div>
     <ng-container *ngIf="basketList">
-      <app-basket-list [basketList]="basketList"></app-basket-list>
+      <app-basket-list [basketList]="basketList" (onRemoveBasket)="initBasketList()"></app-basket-list>
     </ng-container>
+    <app-fullscreen-loader [isLoading]="isLoading"></app-fullscreen-loader>
   </div>
 </section>

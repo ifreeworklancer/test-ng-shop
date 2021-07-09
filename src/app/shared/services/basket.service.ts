@@ -8,10 +8,11 @@ import {IProduct} from "../interfaces/product";
 })
 export class BasketService {
   public basket$: BehaviorSubject<[]>;
-  public productsBasket$: BehaviorSubject<IProduct[] | []> = new BehaviorSubject<IProduct[]|[]>([]);
+  public productsBasket$: BehaviorSubject<IProduct[] | []> = new BehaviorSubject<IProduct[] | []>([]);
 
   constructor(private productsService: ProductsService) {
     this.basket$ = new BehaviorSubject<[]>(this.getBasket);
+    this.getProductBasket();
   }
 
   get getBasket(): any {
@@ -21,18 +22,17 @@ export class BasketService {
     return [];
   }
 
-  get getBasketProduct(): any {
-    if (localStorage.getItem('basket')) {
-      this.productsService.getAllProducts().subscribe((products) => {
+  public getProductBasket(): any {
+    this.productsService.getAllProducts().subscribe((products) => {
+      if (this.getBasket.length) {
         let productsBasket = this.getBasket.map((basketItem: number) => {
           return products.find(product => String(product.id) === String(basketItem))
         })
         this.productsBasket$.next(productsBasket);
-        return productsBasket;
-      })
-    }
-    this.productsBasket$?.next([]);
-    return [];
+        return;
+      }
+      this.productsBasket$.next([]);
+    })
   }
 
   public setBasket(id: string): void {
@@ -41,6 +41,7 @@ export class BasketService {
       newBasketItem.push(id);
       localStorage.setItem('basket', JSON.stringify(newBasketItem));
       this.basket$?.next(this.getBasket)
+      this.getProductBasket();
     }
   }
 
@@ -51,12 +52,14 @@ export class BasketService {
       newBasketItem.splice(alreadyBasketItemIndex, 1);
       localStorage.setItem('basket', JSON.stringify(newBasketItem));
       this.basket$?.next(this.getBasket)
+      this.getProductBasket();
     }
   }
 
   public removeAllBasket(): void {
     localStorage.removeItem('basket');
     this.basket$?.next(this.getBasket)
+    this.getProductBasket();
   }
 
   public isAlreadyBasketItem(id: string): boolean {

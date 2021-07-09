@@ -9,12 +9,12 @@ import {IProduct} from "../shared/interfaces/product";
 })
 export class BasketComponent implements OnInit {
   public basketList?: IProduct[];
+  public isLoading: boolean = false;
 
   constructor(private basketService: BasketService) {
   }
 
   public initBasketList(): void {
-    this.basketService.getBasketProduct;
     this.basketService.productsBasket$.subscribe(productBasket => {
       this.basketList = productBasket;
     })

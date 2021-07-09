@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IProduct} from "../../../shared/interfaces/product";
 
 @Component({
@@ -8,8 +8,13 @@ import {IProduct} from "../../../shared/interfaces/product";
 })
 export class BasketListComponent implements OnInit {
   @Input() basketList?: IProduct[];
+  @Output() onRemoveBasket = new EventEmitter;
 
   constructor() { }
+
+  public removeBasket() {
+    this.onRemoveBasket.emit();
+  }
 
   ngOnInit(): void {
   }

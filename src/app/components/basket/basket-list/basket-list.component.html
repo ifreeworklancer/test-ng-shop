@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <ng-container *ngIf="basketList">
-        <app-basket-item class="basket-list-item" *ngFor="let basket of basketList" [basket]="basket"></app-basket-item>
+        <app-basket-item class="basket-list-item" *ngFor="let basket of basketList" [basket]="basket" (onRemoveBasket)="removeBasket()"></app-basket-item>
       </ng-container>
     </div>
   </div>
