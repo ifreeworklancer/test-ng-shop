@@ -4,12 +4,14 @@ import {HomeComponent} from "./home/home.component";
 import {ProductsArchiveComponent} from "./products/products-archive/products-archive.component";
 import {ProductsSingleComponent} from "./products/products-single/products-single.component";
 import {BasketComponent} from "./basket/basket.component";
+import {LoginComponent} from "./auth/login/login.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'products', component: ProductsArchiveComponent},
   {path: 'products/:id', component: ProductsSingleComponent},
   {path: 'basket', component: BasketComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({

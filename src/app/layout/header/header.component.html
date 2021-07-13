@@ -5,10 +5,15 @@
         <a routerLink="/" class="logo">LOGO</a>
       </div>
       <div class="col-auto">
-        <div class="basket">
-          <a routerLink="/basket" mat-icon-button aria-label="Basket">
-            <mat-icon [matBadge]="basketLength" matBadgeSize="small" matBadgeColor="warn">shopping_basket</mat-icon>
-          </a>
+        <div class="d-flex align-item-center">
+          <div class="auth-control">
+            <a routerLink="/login" mat-button>Login</a>
+          </div>
+          <div class="basket">
+            <a routerLink="/basket" mat-icon-button aria-label="Basket">
+              <mat-icon [matBadge]="basketLength" matBadgeSize="small" matBadgeColor="warn">shopping_basket</mat-icon>
+            </a>
+          </div>
         </div>
       </div>
     </div>

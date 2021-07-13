@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -22,6 +22,8 @@ import { BasketButtonComponent } from './components/basket/basket-button/basket-
 import { BasketComponent } from './basket/basket.component';
 import { BasketListComponent } from './components/basket/basket-list/basket-list.component';
 import { BasketItemComponent } from './components/basket/basket-item/basket-item.component';
+import { LoginComponent } from './auth/login/login.component';
+import { LoginFormComponent } from './components/form/auth/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { BasketItemComponent } from './components/basket/basket-item/basket-item
     BasketButtonComponent,
     BasketComponent,
     BasketListComponent,
-    BasketItemComponent
+    BasketItemComponent,
+    LoginComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
