@@ -10,6 +10,11 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let currentUser = this.authService.currentUserValue;
+    request = request.clone({
+      setHeaders: {
+        'Content-Type': 'application/json',
+      }
+    });
     if (this.authService.isLoginCurrentUser) {
       request = request.clone({
         setHeaders: {

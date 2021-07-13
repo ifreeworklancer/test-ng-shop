@@ -1,0 +1,16 @@
+.form-component {
+
+  .form-field {
+    width: 100%;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      margin-bottom: 15px;
+    }
+
+    .mat-form-field {
+      width: 100%;
+      font-size: 16px;
+    }
+  }
+}

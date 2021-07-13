@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -25,6 +25,7 @@ import {BasketItemComponent} from './components/basket/basket-item/basket-item.c
 import {LoginComponent} from './auth/login/login.component';
 import {LoginFormComponent} from './components/form/auth/login-form/login-form.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
     BasketListComponent,
     BasketItemComponent,
     LoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
     HttpClientModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

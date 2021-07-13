@@ -7,6 +7,7 @@ import {BasketComponent} from "./basket/basket.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {AuthGuard} from "./shared/guards/auth.guard";
 import {LoginGuard} from "./shared/guards/login.guard";
+import {AuthComponent} from "./auth/auth.component";
 
 const routes: Routes = [
   {
@@ -17,7 +18,11 @@ const routes: Routes = [
       {path: 'basket', component: BasketComponent},
     ]
   },
-  {path: 'login', canActivate: [LoginGuard], component: LoginComponent},
+  {
+    path: 'auth', component: AuthComponent, children: [
+      {path: 'login', canActivate: [LoginGuard], component: LoginComponent}
+    ]
+  },
 ];
 
 @NgModule({

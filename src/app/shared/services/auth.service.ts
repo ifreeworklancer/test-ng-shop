@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   login(payload: object): any {
-    return this.http.post<any>(environment.apiUri.concat('auth/login'), payload)
+    return this.http.post<any>(environment.authUri.concat('login'), payload)
       .pipe(map(user => {
         if (user && user.token) {
           localStorage.setItem('currentUser', JSON.stringify(user));

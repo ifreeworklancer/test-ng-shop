@@ -1,1 +1,22 @@
-<p>login-form works!</p>
+<form class="form-component" (ngSubmit)="submitForm()" [formGroup]="loginForm">
+  <div class="form-field">
+    <mat-form-field appearance="legacy">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" formControlName="email">
+      <mat-error>{{getEmailErrorMessage}}</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="form-field">
+    <mat-form-field appearance="legacy">
+      <mat-label>Enter your password</mat-label>
+      <input matInput formControlName="password" [type]="passwordHidden ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="changePasswordsType()" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="passwordHidden">
+        <mat-icon>{{passwordHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error>{{getFieldError('password')}}</mat-error>
+    </mat-form-field>
+  </div>
+  <button type="submit" mat-raised-button color="primary">Login</button>
+</form>
+<app-fullscreen-loader [isLoading]="isLoading"></app-fullscreen-loader>
