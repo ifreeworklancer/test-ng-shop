@@ -1,0 +1,53 @@
+.alert {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10000;
+
+  &-success {
+
+    .alert-wrapper {
+      background-color: #67C23A;
+    }
+  }
+
+  &-error {
+
+    .alert-wrapper {
+      background-color: #F56C6C;
+    }
+  }
+
+  &-wrapper {
+    position: relative;
+    padding: 15px 40px;
+    border-radius: 4px;
+  }
+
+  &__message {
+    color: #fff;
+    font-size: 14px;
+
+    @media (min-width: 992px) {
+      font-size: 16px;
+    }
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .close-alert {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .mat-icon {
+      color: #fff;
+    }
+  }
+}

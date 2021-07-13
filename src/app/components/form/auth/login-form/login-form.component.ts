@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../../shared/services/auth.service";
 import {first} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {AlertService} from "../../../../shared/services/alert.service";
 
 @Component({
   selector: 'app-login-form',
@@ -16,7 +17,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private alertService: AlertService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -52,7 +54,12 @@ export class LoginFormComponent implements OnInit {
       .subscribe(() => {
         this.router.navigate(['/'])
         this.isLoading = false
-      }, () => {
+      }, (errors: any) => {
+        if(errors?.error?.error && Number(errors.status) === 400) {
+          this.alertService.error(errors.error.error);
+        } else {
+          this.alertService.error('Oops, something went wrong')
+        }
         this.isLoading = false
       })
   }
