@@ -5,13 +5,19 @@ import {ProductsArchiveComponent} from "./products/products-archive/products-arc
 import {ProductsSingleComponent} from "./products/products-single/products-single.component";
 import {BasketComponent} from "./basket/basket.component";
 import {LoginComponent} from "./auth/login/login.component";
+import {AuthGuard} from "./shared/guards/auth.guard";
+import {LoginGuard} from "./shared/guards/login.guard";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'products', component: ProductsArchiveComponent},
-  {path: 'products/:id', component: ProductsSingleComponent},
-  {path: 'basket', component: BasketComponent},
-  {path: 'login', component: LoginComponent},
+  {
+    path: '', canActivate: [AuthGuard], children: [
+      {path: '', component: HomeComponent},
+      {path: 'products', component: ProductsArchiveComponent},
+      {path: 'products/:id', component: ProductsSingleComponent},
+      {path: 'basket', component: BasketComponent},
+    ]
+  },
+  {path: 'login', canActivate: [LoginGuard], component: LoginComponent},
 ];
 
 @NgModule({
