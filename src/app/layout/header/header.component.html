@@ -7,7 +7,7 @@
       <div class="col-auto">
         <div class="d-flex align-item-center">
           <div class="auth-control">
-            <a routerLink="/login" mat-button>Login</a>
+            <button mat-button (click)="logout()">Logout</button>
           </div>
           <div class="basket">
             <a routerLink="/basket" mat-icon-button aria-label="Basket">

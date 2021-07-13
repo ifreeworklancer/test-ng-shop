@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoginUser = this.authService.isLoginCurrentUser
+    this.authService.currentUser.subscribe((value) => {
+      this.isLoginUser = value && value.token;
+    })
   }
 }
