@@ -7,7 +7,7 @@ import {map} from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
@@ -21,7 +21,7 @@ export class AuthenticationService {
   }
 
   get isLoginCurrentUser(): boolean {
-    return this.currentUserValue && Boolean(this.currentUserValue.token);
+    return Boolean(this.currentUserValue) && Boolean(this.currentUserValue.token);
   }
 
   login(payload: object): any {
