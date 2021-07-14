@@ -9,6 +9,7 @@ import {NavigationStart, Router} from "@angular/router";
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss']
 })
+
 export class AlertComponent implements OnInit, OnDestroy {
   @Input() id = 'default-alert';
   @Input() fade = true;
@@ -20,7 +21,7 @@ export class AlertComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private alertService: AlertService) {
   }
 
-  handlerCallAlert() {
+  public handlerCallAlert(): void {
     this.alertSubscription = this.alertService.onAlert(this.id)
       .subscribe(alert => {
         if (!alert.message) {
@@ -43,7 +44,12 @@ export class AlertComponent implements OnInit, OnDestroy {
     });
   }
 
-  public removeAlert(alert: Alert) {
+  public unsubscribeComponent(): void {
+    this.alertSubscription?.unsubscribe();
+    this.routeSubscription?.unsubscribe();
+  }
+
+  public removeAlert(alert: Alert): void {
     if (!this.alerts.includes(alert)) return;
 
     if (this.fade) {
@@ -58,8 +64,8 @@ export class AlertComponent implements OnInit, OnDestroy {
     }
   }
 
-  public cssClass(alert: Alert) {
-    if (!alert) return;
+  public cssClass(alert: Alert): string {
+    if (!alert) return '';
 
     const classes = ['alert', 'alert-dismissable'];
     const alertTypeClass = {
@@ -79,9 +85,8 @@ export class AlertComponent implements OnInit, OnDestroy {
     this.handlerCallAlert();
   }
 
-  ngOnDestroy() {
-    this.alertSubscription?.unsubscribe();
-    this.routeSubscription?.unsubscribe();
+  ngOnDestroy(): void {
+    this.unsubscribeComponent();
   }
 
 }
