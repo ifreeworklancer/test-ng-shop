@@ -24,7 +24,7 @@ export class AuthService {
     return Boolean(this.currentUserValue) && Boolean(this.currentUserValue.token);
   }
 
-  login(payload: object): any {
+  public login(payload: object): any {
     return this.http.post<any>(environment.authUri.concat('login'), payload)
       .pipe(map(user => {
         if (user && user.token) {
@@ -35,7 +35,7 @@ export class AuthService {
       }));
   }
 
-  logout(): any {
+  public logout(): any {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }

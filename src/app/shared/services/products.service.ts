@@ -19,7 +19,6 @@ export class ProductsService {
     return this.http.get<IProduct>(environment.apiUri.concat(`products/${id}`))
   }
 
-
   public getMostPopularProducts(limit: number) {
     const params = new HttpParams().set('limit', limit)
     return this.http.get<IProduct[]>(environment.apiUri.concat('products'), {params})
