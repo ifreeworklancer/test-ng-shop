@@ -55,10 +55,10 @@ export class LoginFormComponent implements OnInit {
         this.router.navigate(['/'])
         this.isLoading = false
       }, (errors: any) => {
-        if(errors?.error?.error && Number(errors.status) === 400) {
+        if (errors?.error?.error && Number(errors.status) === 400) {
           this.alertService.error(errors.error.error);
         } else {
-          this.alertService.error('Oops, something went wrong')
+          this.alertService.error('Oops, something went wrong');
         }
         this.isLoading = false
       })

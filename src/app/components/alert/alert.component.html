@@ -1,13 +1,11 @@
-<div *ngIf="message" [className]="message?.cssClass">
+<div class="alert-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-sm-8 col-md-7 col-lg-6 col-xl-5 mx-auto">
-        <div class="alert-wrapper">
-          <div class="alert__message">
-            {{message.text}}
-          </div>
+        <div *ngFor="let alert of alerts" class="{{cssClass(alert)}}">
+          <div class="alert__message" [innerHTML]="alert.message"></div>
           <div class="close-alert">
-            <button (click)="closeAlert()" mat-icon-button aria-label="Close alert">
+            <button (click)="removeAlert(alert)" mat-icon-button aria-label="Close alert">
               <mat-icon>close</mat-icon>
             </button>
           </div>

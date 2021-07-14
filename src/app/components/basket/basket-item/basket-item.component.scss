@@ -80,10 +80,6 @@
     font-weight: 500;
     margin-bottom: 0;
     text-align: center;
-
-    @media (min-width: 992px) {
-      text-align: left;
-    }
   }
 
   &__price {

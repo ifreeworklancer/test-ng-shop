@@ -1,30 +1,39 @@
-.alert {
+.alert-wrapper {
   position: fixed;
   top: 80px;
-  left: 50%;
+  left: 0;
   width: 100%;
-  transform: translateX(-50%);
   text-align: center;
   z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alert {
+  position: relative;
+  padding: 15px 35px;
+  border-radius: 4px;
+  margin-bottom: 25px;
+
+  &-dismissable {
+    background-color: #333;
+  }
 
   &-success {
-
-    .alert-wrapper {
-      background-color: #67C23A;
-    }
+    background-color: #67C23A;
   }
 
-  &-error {
-
-    .alert-wrapper {
-      background-color: #F56C6C;
-    }
+  &-danger {
+    background-color: #F56C6C;
   }
 
-  &-wrapper {
-    position: relative;
-    padding: 15px 40px;
-    border-radius: 4px;
+  &-info {
+    background-color: #909399;
+
+  }
+  &-warnin {
+    background-color: #E6A23C;
   }
 
   &__message {
