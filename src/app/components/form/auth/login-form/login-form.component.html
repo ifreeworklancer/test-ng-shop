@@ -10,7 +10,7 @@
     <mat-form-field appearance="legacy">
       <mat-label>Enter your password</mat-label>
       <input matInput formControlName="password" [type]="passwordHidden ? 'password' : 'text'">
-      <button mat-icon-button matSuffix (click)="changePasswordsType()" [attr.aria-label]="'Hide password'"
+      <button type="button" mat-icon-button matSuffix (click)="changePasswordsType()" [attr.aria-label]="'Hide password'"
               [attr.aria-pressed]="passwordHidden">
         <mat-icon>{{passwordHidden ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>

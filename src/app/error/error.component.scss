@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 auto;
+}
+
+.section-error {
+  &-body {
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .page-description {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+}

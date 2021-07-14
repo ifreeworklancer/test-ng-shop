@@ -8,6 +8,7 @@ import {LoginComponent} from "./auth/login/login.component";
 import {AuthGuard} from "./shared/guards/auth.guard";
 import {LoginGuard} from "./shared/guards/login.guard";
 import {AuthComponent} from "./auth/auth.component";
+import {ErrorComponent} from "./error/error.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       {path: 'login', canActivate: [LoginGuard], component: LoginComponent}
     ]
   },
+  {path: '**', component: ErrorComponent},
 ];
 
 @NgModule({

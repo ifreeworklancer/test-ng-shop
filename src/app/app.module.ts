@@ -27,6 +27,7 @@ import {LoginFormComponent} from './components/form/auth/login-form/login-form.c
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
 import { AuthComponent } from './auth/auth.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { AlertComponent } from './components/alert/alert.component';
     LoginFormComponent,
     AuthComponent,
     AlertComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
