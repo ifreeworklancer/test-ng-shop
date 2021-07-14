@@ -56,9 +56,9 @@ export class LoginFormComponent implements OnInit {
         this.isLoading = false
       }, (errors: any) => {
         if (errors?.error?.error && Number(errors.status) === 400) {
-          this.alertService.error(errors.error.error);
+          this.alertService.error(errors.error.error, {autoClose: true, keepAfterRouteChange: false});
         } else {
-          this.alertService.error('Oops, something went wrong');
+          this.alertService.error('Oops, something went wrong', {autoClose: true, keepAfterRouteChange: false});
         }
         this.isLoading = false
       })
