@@ -13,9 +13,13 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService) {
   }
 
-  ngOnInit(): void {
+  public detectIsUserLogin() {
     this.authService.currentUser.subscribe((value) => {
       this.isLoginUser = value && value.token;
     })
+  }
+
+  ngOnInit(): void {
+    this.detectIsUserLogin();
   }
 }
