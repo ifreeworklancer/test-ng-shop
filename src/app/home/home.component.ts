@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public initProductsList() {
+  public initProductsList(): void {
     const limit = 3;
     this.productsService.getMostPopularProducts(limit).subscribe(
       (products: IProduct[]) => {
