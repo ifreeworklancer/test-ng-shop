@@ -34,8 +34,8 @@ export class ProductsSingleComponent implements OnInit {
         if (product === null) {
           this.router.navigate(['products']);
         }
+        this.isLoading = false;
         this.product = product;
-      }, () => {
       }, () => this.isLoading = false)
   }
 
