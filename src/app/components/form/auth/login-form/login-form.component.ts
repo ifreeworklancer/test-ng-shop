@@ -29,7 +29,7 @@ export class LoginFormComponent implements OnInit {
     this.passwordHidden = !this.passwordHidden;
   }
 
-  get getEmailErrorMessage(): String {
+  get getEmailErrorMessage(): string {
     if (this.loginForm.controls.email.hasError('required')) {
       return 'You must enter a value';
     }
@@ -44,7 +44,7 @@ export class LoginFormComponent implements OnInit {
     return '';
   }
 
-  public submitForm() {
+  public submitForm(): void {
     if (this.loginForm.invalid) {
       return;
     }

@@ -14,7 +14,7 @@ export class BasketItemComponent implements OnInit {
   constructor(private basketService: BasketService) {
   }
 
-  public removeBasketItem(): any {
+  public removeBasketItem(): void {
     this.basketService.removeBasketItem(String(this.basket?.id));
     this.onRemoveBasket.emit();
   }

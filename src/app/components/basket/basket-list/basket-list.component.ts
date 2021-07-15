@@ -15,12 +15,12 @@ export class BasketListComponent implements OnInit {
   constructor(private basketService: BasketService) {
   }
 
-  public removeAllBasket() {
+  public removeAllBasket(): void {
     this.basketService.removeAllBasket();
     this.onRemoveBasket.emit();
   }
 
-  public removeBasketItem() {
+  public removeBasketItem(): void {
     this.onRemoveBasket.emit();
   }
 
