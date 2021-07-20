@@ -7,11 +7,10 @@ import {BasketComponent} from "./basket/basket.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {LoginGuard} from "./shared/guards/login.guard";
 import {ErrorComponent} from "./error/error.component";
-import {SuperadminGuard} from "./shared/guards/superadmin.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'products',  canActivate: [SuperadminGuard], component: ProductsArchiveComponent},
+  {path: 'products', component: ProductsArchiveComponent},
   {path: 'products/:id', component: ProductsSingleComponent},
   {path: 'basket', component: BasketComponent},
   {path: 'auth/login', canActivate: [LoginGuard], component: LoginComponent},
