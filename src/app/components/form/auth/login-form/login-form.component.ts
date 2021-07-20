@@ -50,18 +50,13 @@ export class LoginFormComponent implements OnInit {
     }
     this.isLoading = true;
     this.authService.login(this.loginForm.value)
-      .pipe(first())
-      .subscribe(() => {
+      .then(() => {
         this.router.navigate(['/'])
-        this.isLoading = false
-      }, (errors: any) => {
-        if (errors?.error?.error && Number(errors.status) === 400) {
-          this.alertService.error(errors.error.error, {autoClose: true, keepAfterRouteChange: false});
-        } else {
-          this.alertService.error('Oops, something went wrong', {autoClose: true, keepAfterRouteChange: false});
-        }
-        this.isLoading = false
       })
+      .catch((error: any) => {
+        this.alertService.error(error.message, {autoClose: true, keepAfterRouteChange: false});
+      })
+      .finally(() => this.isLoading = false)
   }
 
   ngOnInit(): void {

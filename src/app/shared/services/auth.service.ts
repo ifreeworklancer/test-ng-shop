@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
-import {map} from "rxjs/operators";
+import {AngularFireAuth} from "@angular/fire/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(private fireAuth: AngularFireAuth) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(<string>localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -24,15 +22,15 @@ export class AuthService {
     return Boolean(this.currentUserValue) && Boolean(this.currentUserValue.token);
   }
 
-  public login(payload: object): any {
-    return this.http.post<any>(environment.authUri.concat('login'), payload)
-      .pipe(map(user => {
-        if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
+  public login({email, password}: any): any {
+    return this.fireAuth.signInWithEmailAndPassword(email, password)
+      .then(({user}) => {
+        if (user && user.refreshToken) {
+          let currentUserObject = {uid: user.uid, token: user.refreshToken};
+          localStorage.setItem('currentUser', JSON.stringify(currentUserObject));
+          this.currentUserSubject.next(currentUserObject);
         }
-        return user;
-      }));
+      })
   }
 
   public logout(): any {
