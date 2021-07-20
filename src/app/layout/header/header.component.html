@@ -6,7 +6,10 @@
       </div>
       <div class="col-auto">
         <div class="d-flex align-item-center">
-          <div class="auth-control">
+          <div class="auth-control" *ngIf="!isLoginUser">
+            <a routerLink="/auth/login" mat-button>Login</a>
+          </div>
+          <div class="auth-control" *ngIf="isLoginUser">
             <button mat-button (click)="logout()">Logout</button>
           </div>
           <div class="basket">

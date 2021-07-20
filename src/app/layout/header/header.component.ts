@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BasketService} from "../../shared/services/basket.service";
 import {AuthService} from "../../shared/services/auth.service";
 import {Router} from "@angular/router";
@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Input() isLoginUser: boolean = false;
   public basketLength: number = 0;
 
   constructor(private basketService: BasketService, private authService: AuthService, private router: Router) {

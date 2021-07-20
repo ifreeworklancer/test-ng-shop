@@ -25,7 +25,6 @@ import {BasketItemComponent} from './components/basket/basket-item/basket-item.c
 import {LoginComponent} from './auth/login/login.component';
 import {LoginFormComponent} from './components/form/auth/login-form/login-form.component';
 import {JwtInterceptor} from "./shared/interceptors/jwt.interceptor";
-import {AuthComponent} from './auth/auth.component';
 import {AlertComponent} from './components/alert/alert.component';
 import {ErrorComponent} from './error/error.component';
 import {AngularFireModule} from "@angular/fire";
@@ -51,7 +50,6 @@ import {environment} from "../environments/environment";
     BasketItemComponent,
     LoginComponent,
     LoginFormComponent,
-    AuthComponent,
     AlertComponent,
     ErrorComponent,
   ],
