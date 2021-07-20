@@ -6,18 +6,18 @@ import {AuthService} from "../services/auth.service";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class SuperadminGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.authService.isLoginCurrentUser) {
-      return true;
+    if (!this.authService.isCurrentUserSuperAdmin) {
+      this.router.navigate(['/']);
+      return false;
     }
-    this.router.navigate(['auth/login']);
-    return false;
+    return true;
   }
 
 }
